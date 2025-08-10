@@ -6,6 +6,7 @@ import Rootlayout from "../Pages/Rootlayout";
 import Cart from "../Pages/Cart";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
+import RouteProtector from "./RouteProtector";
 
 export const rootRouter = createBrowserRouter([
   {
@@ -17,7 +18,14 @@ export const rootRouter = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/shop", element: <Shop /> },
       { path: "/app", element: <App /> },
-      { path: "/cart", element: <Cart /> },
+      {
+        path: "/cart",
+        element: (
+          <RouteProtector>
+            <Cart />
+          </RouteProtector>
+        ),
+      },
     ],
   },
 ]);

@@ -59,9 +59,11 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <div className="navbar-end pr-4">
-        <Link to={"/cart"}>Cart</Link>
-      </div>
+      {userLoggedIn && (
+        <div className="navbar-end pr-4">
+          <Link to={"/cart"}>Cart</Link>
+        </div>
+      )}
 
       {userLoggedIn && role === "admin" && (
         <button className="btn btn-success text-1xl m-2">Add Product</button>
