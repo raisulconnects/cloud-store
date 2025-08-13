@@ -1,8 +1,13 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/cartSlice";
+import { useAuth } from "../Contexts/AuthContext";
+import { useDeleteProductMutation } from "../Features/apiSlice";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const { role } = useAuth();
+
+  const [deleteProduct] = useDeleteProductMutation();
 
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
@@ -22,6 +27,18 @@ export default function ProductCard({ product }) {
           >
             Add To Cart
           </button>
+
+          {role == "admin" && (
+            <button
+              className="btn btn-active btn-error"
+              onClick={async () => {
+                await deleteProduct(product);
+                console.log("Done");
+              }}
+            >
+              Delete Product
+            </button>
+          )}
         </div>
       </div>
     </div>

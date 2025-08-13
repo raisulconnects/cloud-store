@@ -66,7 +66,10 @@ export default function Navbar() {
       )}
 
       {userLoggedIn && role === "admin" && (
-        <button className="btn btn-success text-1xl m-2">Add Product</button>
+        <button className="btn btn-success text-1xl m-2">
+          {" "}
+          <Link to={"/add-product"}> Add Product</Link>{" "}
+        </button>
       )}
       {userLoggedIn && (
         <button

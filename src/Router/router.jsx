@@ -7,6 +7,8 @@ import Cart from "../Pages/Cart";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import RouteProtector from "./RouteProtector";
+import AddProduct from "../Pages/AddProduct";
+import PrivateRouterProtector from "./PrivateRouteProtector";
 
 export const rootRouter = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ export const rootRouter = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/shop", element: <Shop /> },
       { path: "/app", element: <App /> },
+      {
+        path: "/add-product",
+        element: (
+          <PrivateRouterProtector>
+            <AddProduct />
+          </PrivateRouterProtector>
+        ),
+      },
       {
         path: "/cart",
         element: (
