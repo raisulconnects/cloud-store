@@ -17,6 +17,7 @@ export const rootRouter = createBrowserRouter([
     element: <Rootlayout />,
     children: [
       { path: "*", element: <PageNotFound /> },
+      { path: "/", element: <Home /> },
       { path: "/home", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
