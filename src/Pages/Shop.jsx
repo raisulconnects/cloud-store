@@ -28,7 +28,7 @@ export default function Shop() {
   return (
     <div className="flex justify-center flex-col gap-5">
       <h1 className="text-5xl text-center mb-5">Shop Section</h1>
-      <div className="grid grid-cols-3 justify-items-center">
+      <div className="grid grid-cols-3 justify-items-center gap-5">
         {products?.map((prod) => (
           <ProductCard key={prod.id} product={prod} />
         ))}

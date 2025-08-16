@@ -8,7 +8,7 @@ export default function Cart() {
 
   let sum = 0;
   cart.forEach((element) => {
-    sum += Number(element.Price);
+    sum += Number(element.Price * element.quantity);
   });
 
   return (

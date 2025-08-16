@@ -6,10 +6,12 @@ import { rootRouter } from "./Router/router.jsx";
 import { Provider } from "react-redux";
 import { store } from "./Store/store.js";
 import { AuthProvider } from "./Contexts/AuthContext.jsx";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <AuthProvider>
+      <ToastContainer />
       <RouterProvider router={rootRouter} />
     </AuthProvider>
   </Provider>

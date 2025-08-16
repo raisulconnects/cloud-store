@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../Features/cartSlice";
 import { useAuth } from "../Contexts/AuthContext";
 import { useDeleteProductMutation } from "../Features/apiSlice";
+import { toast } from "react-toastify";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ export default function ProductCard({ product }) {
             className="btn btn-primary"
             onClick={() => {
               dispatch(addToCart(product));
+              toast.success(`${product.Title} added to Cart`, {
+                position: "bottom-left",
+              });
             }}
           >
             Add To Cart
@@ -33,7 +37,8 @@ export default function ProductCard({ product }) {
               className="btn btn-active btn-error"
               onClick={async () => {
                 await deleteProduct(product);
-                console.log("Done");
+                console.log("Product Deleted");
+                toast("Product Deleted!");
               }}
             >
               Delete Product

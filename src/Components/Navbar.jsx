@@ -1,10 +1,11 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../Contexts/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../Firebase";
 
 export default function Navbar() {
   const { role, userLoggedIn } = useAuth();
+  const navigator = useNavigate();
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -35,7 +36,7 @@ export default function Navbar() {
             <li>... </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">Cloud Store</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -66,9 +67,14 @@ export default function Navbar() {
       )}
 
       {userLoggedIn && role === "admin" && (
-        <button className="btn btn-success text-1xl m-2">
+        <button
+          className="btn btn-success text-1xl m-2"
+          onClick={() => {
+            navigator("/add-product");
+          }}
+        >
           {" "}
-          <Link to={"/add-product"}> Add Product</Link>{" "}
+          Add Product
         </button>
       )}
       {userLoggedIn && (
