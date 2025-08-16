@@ -4,6 +4,9 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 export default function AddProduct() {
+  let a = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+  let b = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
   const [addProduct] = useAddProductMutation();
   const navigate = useNavigate();
   const [message, setMessage] = useState("Please Upload Product Image");
@@ -41,8 +44,8 @@ export default function AddProduct() {
     let fileDot = new FormData();
     // This Keys are required By Cloudinary So we can use it to upload our required Files
     fileDot.append("file", e.target.files[0]);
-    fileDot.append("upload_preset", "cloud-store");
-    fileDot.append("cloud_name", "dh5r86rqw");
+    fileDot.append("upload_preset", a);
+    fileDot.append("cloud_name", b);
 
     try {
       const res = await fetch(

@@ -32,13 +32,27 @@ export default function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li> ...</li>
-            <li>... </li>
+            <li>
+              <Link to={"/login"}> Login </Link>
+            </li>
+            <li>
+              <Link to={"/signup"}> Signup </Link>
+            </li>
+            <li>
+              <Link to={"/shop"}> Shop </Link>
+            </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Cloud Store</a>
+        <a
+          className="btn btn-ghost text-xl"
+          onClick={() => {
+            navigator("/home");
+          }}
+        >
+          Cloud Store
+        </a>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex mr-5">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to={"/home"}> Home </Link>
@@ -59,34 +73,35 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
+      <div className="navbar-end">
+        {userLoggedIn && (
+          <div className="navbar-end pr-4">
+            <Link to={"/cart"}>Cart</Link>
+          </div>
+        )}
 
-      {userLoggedIn && (
-        <div className="navbar-end pr-4">
-          <Link to={"/cart"}>Cart</Link>
-        </div>
-      )}
-
-      {userLoggedIn && role === "admin" && (
-        <button
-          className="btn btn-success text-1xl m-2"
-          onClick={() => {
-            navigator("/add-product");
-          }}
-        >
-          {" "}
-          Add Product
-        </button>
-      )}
-      {userLoggedIn && (
-        <button
-          className="btn btn-error"
-          onClick={() => {
-            signOut(auth);
-          }}
-        >
-          Logout
-        </button>
-      )}
+        {userLoggedIn && role === "admin" && (
+          <button
+            className="btn btn-success text-1xl m-2"
+            onClick={() => {
+              navigator("/add-product");
+            }}
+          >
+            {" "}
+            Add Product
+          </button>
+        )}
+        {userLoggedIn && (
+          <button
+            className="btn btn-error"
+            onClick={() => {
+              signOut(auth);
+            }}
+          >
+            Logout
+          </button>
+        )}
+      </div>
     </div>
   );
 }
