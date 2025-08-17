@@ -1,5 +1,7 @@
 # Cloud Store
+
 Live demo: [Netlify Link] https://cloudstoree.netlify.app/
+
 ## Description
 
 Cloud Store is a simple e-commerce application built using the modern React ecosystem. It allows users to browse products, add and remove items from their cart, and supports role-based functionality — admin users can add and delete products.  
@@ -16,6 +18,7 @@ This project was created as part of my learning journey and helped me understand
 - Remove product from cart
 - Admin: Add product
 - Admin: Delete product
+- Integrate Stripe Checkout (test mode) for payment flow
 
 ## Tech Stack
 
