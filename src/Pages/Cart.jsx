@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../Components/CartItem";
 import { clearCart } from "../Features/cartSlice";
 import { useAuth } from "../Contexts/AuthContext";
-import { useState } from "react";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);

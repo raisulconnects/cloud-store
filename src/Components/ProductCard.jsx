@@ -3,10 +3,12 @@ import { addToCart } from "../Features/cartSlice";
 import { useAuth } from "../Contexts/AuthContext";
 import { useDeleteProductMutation } from "../Features/apiSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
-  const { role } = useAuth();
+  const { role, userLoggedIn } = useAuth();
+  const navigator = useNavigate();
 
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -23,10 +25,15 @@ export default function ProductCard({ product }) {
           <button
             className="btn btn-primary"
             onClick={() => {
-              dispatch(addToCart(product));
-              toast.success(`${product.Title} added to Cart`, {
-                position: "bottom-left",
-              });
+              if (userLoggedIn) {
+                dispatch(addToCart(product));
+                toast.success(`${product.Title} added to Cart`, {
+                  position: "bottom-left",
+                });
+              } else {
+                navigator("/login");
+                toast.error("Please Login First");
+              }
             }}
           >
             Add To Cart
